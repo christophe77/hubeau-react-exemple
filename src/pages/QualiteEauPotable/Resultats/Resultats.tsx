@@ -21,9 +21,9 @@ export default function Resultats(props: ResultatsProps) {
       <Table sx={{ minWidth: 650 }} aria-label="udi-resultats">
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
-            <TableCell align="center">Paramètre</TableCell>
-            <TableCell align="center">Résultat</TableCell>
+            <TableCell><b>Date</b></TableCell>
+            <TableCell align="center"><b>Paramètre</b></TableCell>
+            <TableCell align="center"><b>Résultat</b></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
