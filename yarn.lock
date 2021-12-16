@@ -4810,10 +4810,10 @@ https-proxy-agent@^5.0.0:
     agent-base "6"
     debug "4"
 
-hubeau-api@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/hubeau-api/-/hubeau-api-0.1.4.tgz#f4403eb1a03cb14d80e8de9c0d44b15b3e1fbff8"
-  integrity sha512-BxxZEuHrEQAAa/q6XvBPFjv/V1hS/do74bmCMluFQYIimQto1mBOGG9FZyGEV6Yx4kuvCKviJRLKsDJG8oU0iQ==
+hubeau-api@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/hubeau-api/-/hubeau-api-0.1.6.tgz#6a0c84a0bfa1b1783ad40a1348f82a193410c73b"
+  integrity sha512-gYvWtYkI5haA81xB78IaWLeu+vVk2Zf6Yd7IqxmHc8BTK6BtufQTo/bNTnpp5gQMgGYppnLNCYA8gFjm9lWG7w==
   dependencies:
     "@types/superagent" "^4.1.13"
     superagent "^6.1.0"
