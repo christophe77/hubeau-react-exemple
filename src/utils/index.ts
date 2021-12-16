@@ -1,0 +1,8 @@
+export function convertDate(inputFormat: string) {
+  function pad(s: number) {
+    return s < 10 ? "0" + s : s;
+  }
+  const d = new Date(inputFormat);
+  return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join("/");
+}
+export const currentYear = Number(new Date().getFullYear());
