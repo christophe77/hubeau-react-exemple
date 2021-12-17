@@ -1,5 +1,5 @@
 import React, { useState, MouseEvent } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, withRouter } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -14,7 +14,7 @@ import HubeauLogo from "../assets/images/logo-hubeau.svg";
 
 const pages = [{ title: "Qualité eau potable", path: "/qualite-eau-potable" }];
 
-export default function ResponsiveAppBar() {
+function ResponsiveAppBar() {
   const history = useHistory();
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
@@ -117,3 +117,4 @@ export default function ResponsiveAppBar() {
     </AppBar>
   );
 }
+export default withRouter(ResponsiveAppBar)

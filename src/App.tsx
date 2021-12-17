@@ -1,26 +1,34 @@
 import React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route  } from "react-router-dom";
 import ResponsiveAppBar from "./header/ResponsiveAppBar";
-import HomePage from "./pages/Home";
-import QualiteEauPotable from "./pages/QualiteEauPotable";
+import routes from "./routes";
 
-const App = () => (
+const App = () => {
+  return (
     <BrowserRouter>
       <ResponsiveAppBar />
       <CssBaseline />
       <Container maxWidth="xl" style={{ padding: "20px" }}>
         <Switch>
-          <Route path="/" exact component={HomePage} />
-          <Route
-            path="/qualite-eau-potable"
-            exact
-            component={QualiteEauPotable}
-          />
+          {routes &&
+            routes.length > 0 &&
+            routes.map((route) => {
+              const { key, path, exact, component } = route;
+              return (
+                <Route
+                  key={key}
+                  path={path}
+                  exact={exact}
+                  component={component}
+                />
+              );
+            })}
         </Switch>
       </Container>
     </BrowserRouter>
-);
+  );
+};
 
 export default App;

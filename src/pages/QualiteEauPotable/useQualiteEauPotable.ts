@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { qualiteEauPotable } from "hubeau-api";
-import { Udi, Resultat } from "./types";
+import { Udi, Resultat, Parametre } from "./types";
 import { currentYear } from "../../utils";
+import dataParametres from "./codes_parametres.json";
 
 const useQualiteEauPotable = () => {
   const [commune, setCommune] = useState<string>("");
   const [udiList, setUdilist] = useState<Udi[]>([]);
   const [resultats, setResultats] = useState<Resultat[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [searchIsLoading, setSearchIsLoading] = useState<boolean>(false);
+  const [resultIsLoading, setResultIsLoading] = useState<boolean>(false);
+  const [parametres, setParametres] = useState<Parametre[]>(
+    dataParametres.codes_parametres
+  );
 
   async function getUdiList() {
-    setIsLoading(true);
+    setSearchIsLoading(true);
     const params = {
       nom_commune: [commune],
       annee: [currentYear],
@@ -24,11 +29,11 @@ const useQualiteEauPotable = () => {
         });
         setUdilist(uiUdiList);
       } catch {
-        setIsLoading(false);
+        setSearchIsLoading(false);
         throw new Error("");
       }
     }
-    setIsLoading(false);
+    setSearchIsLoading(false);
   }
   async function getResultats(udi: Udi) {
     const udiIndexInList = udiList.findIndex(
@@ -39,27 +44,33 @@ const useQualiteEauPotable = () => {
       udiListClone[udiIndexInList].open = false;
       setUdilist(udiListClone);
     } else {
-      setIsLoading(true);
+      setResultIsLoading(true);
+      const code_parametre: string[] = [];
+      parametres.forEach((code) => {
+        if (code.selected) {
+          code_parametre.push(code.code_parametre);
+        }
+      });
       const params = {
         nom_commune: [commune],
         code_reseau: [udi.code_reseau],
         nom_quartier: [udi.nom_quartier],
         nom_reseau: [udi.nom_reseau],
+        code_parametre,
         size: 10,
       };
       try {
         const results = await qualiteEauPotable.resultatsDis(params);
         setResultats(results.data);
       } catch {
-        setIsLoading(false);
+        setResultIsLoading(false);
         throw new Error("");
       }
       udiListClone[udiIndexInList].open = true;
       setUdilist(udiListClone);
-      setIsLoading(false);
+      setResultIsLoading(false);
     }
   }
-
   return {
     commune,
     setCommune,
@@ -67,7 +78,10 @@ const useQualiteEauPotable = () => {
     getUdiList,
     getResultats,
     resultats,
-    isLoading,
+    searchIsLoading,
+    resultIsLoading,
+    parametres,
+    setParametres,
   };
 };
 export default useQualiteEauPotable;

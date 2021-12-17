@@ -1,7 +1,4 @@
 import React, { Fragment } from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import ListSubheader from "@mui/material/ListSubheader";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -10,8 +7,10 @@ import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import CircularProgress from "@mui/material/CircularProgress";
+import PageTitle from "../../common/PageTitle";
 import useQualiteEauPotable from "./useQualiteEauPotable";
-import Resultats from "./Resultats/Resultats";
+import Recherche from "./Recherche";
+import Resultats from "./Resultats";
 
 export default function QualiteEauPotable() {
   const {
@@ -19,29 +18,26 @@ export default function QualiteEauPotable() {
     setCommune,
     getUdiList,
     udiList,
-    isLoading,
+    searchIsLoading,
+    resultIsLoading,
     getResultats,
     resultats,
+    parametres,
+    setParametres,
   } = useQualiteEauPotable();
 
   return (
-    <div>
-      <Box component="form" noValidate autoComplete="off">
-        <TextField
-          id="commune"
-          label="commune"
-          value={commune}
-          onChange={(event) => {
-            setCommune(event.target.value);
-          }}
-          variant="outlined"
-        />
-        <Button variant="outlined" onClick={getUdiList}>
-          Valider
-        </Button>
-      </Box>
-      {isLoading && <CircularProgress />}
-      {!isLoading && udiList && udiList.length > 0 && (
+    <>
+      <PageTitle path={"/qualite-eau-potable"} />
+      <Recherche
+        commune={commune}
+        setCommune={setCommune}
+        getUdiList={getUdiList}
+        parametres={parametres}
+        setParametres={setParametres}
+      />
+      {searchIsLoading && <CircularProgress />}
+      {!searchIsLoading && udiList && udiList.length > 0 && (
         <List
           sx={{ width: "100%", bgcolor: "background.paper" }}
           component="nav"
@@ -68,13 +64,16 @@ export default function QualiteEauPotable() {
                   {udi.open ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
                 <Collapse in={udi.open} timeout="auto" unmountOnExit>
-                  <Resultats resultats={resultats} isLoading={isLoading}/>
+                  <Resultats
+                    resultats={resultats}
+                    resultIsLoading={resultIsLoading}
+                  />
                 </Collapse>
               </Fragment>
             );
           })}
         </List>
       )}
-    </div>
+    </>
   );
 }
