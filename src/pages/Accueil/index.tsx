@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import routes from "../../routes";
 
 export default function Accueil() {
   return (
@@ -13,10 +14,16 @@ export default function Accueil() {
           hubeau-api
         </a>
       </h2>
+
       <ul>
-        <li>
-          <Link to="/qualite-eau-potable">Qualité eau potable</Link>
-        </li>
+        {routes &&
+          routes.map((route) => {
+            return (
+              <li key={route.key}>
+                <Link to={route.path}>{route.title}</Link>
+              </li>
+            );
+          })}
       </ul>
     </>
   );

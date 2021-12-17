@@ -11,8 +11,7 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import HubeauLogo from "../assets/images/logo-hubeau.svg";
-
-const pages = [{ title: "Qualité eau potable", path: "/qualite-eau-potable" }];
+import routes from "../routes";
 
 function ResponsiveAppBar() {
   const history = useHistory();
@@ -75,12 +74,12 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
+              {routes.map((route) => (
                 <MenuItem
-                  key={page.title}
-                  onClick={() => handleChangePage(page.path)}
+                  key={route.key}
+                  onClick={() => handleChangePage(route.path)}
                 >
-                  <Typography textAlign="center">{page.title}</Typography>
+                  <Typography textAlign="center">{route.title}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -102,13 +101,13 @@ function ResponsiveAppBar() {
             />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {routes.map((route) => (
               <Button
-                key={page.title}
-                onClick={() => handleChangePage(page.path)}
+                key={route.key}
+                onClick={() => handleChangePage(route.path)}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page.title}
+                {route.title}
               </Button>
             ))}
           </Box>
@@ -117,4 +116,4 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
-export default withRouter(ResponsiveAppBar)
+export default withRouter(ResponsiveAppBar);
