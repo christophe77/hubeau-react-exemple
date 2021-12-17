@@ -1,6 +1,8 @@
 import Accueil from "./pages/Accueil";
-import QualiteEauPotableLogo from "./pages/QualiteEauPotable";
-import EauPotable from "./assets/images/eau-potable.svg";
+import QualiteEauPotable from "./pages/QualiteEauPotable";
+import QualiteEauPotableLogo from "./assets/images/eau-potable.svg";
+import QualiteCoursEau from "./pages/QualiteCoursEau";
+import QualiteCoursEauLogo from "./assets/images/quality.svg";
 import Goutte from "./assets/images/goutte.png";
 import HydrometrieLogo from "./assets/images/hydrometry.svg";
 import Hydrometrie from "./pages/Hydrometrie";
@@ -17,9 +19,9 @@ const routes = [
     key: 2,
     path: "/qualite-eau-potable",
     exact: true,
-    component: QualiteEauPotableLogo,
+    component: QualiteEauPotable,
     title: "Qualité eau potable",
-    image: EauPotable,
+    image: QualiteEauPotableLogo,
   },
   {
     key: 3,
@@ -28,6 +30,14 @@ const routes = [
     component: Hydrometrie,
     title: "Hydrométrie",
     image: HydrometrieLogo,
+  },
+  {
+    key: 4,
+    path: "/qualite-cours-eau",
+    exact: true,
+    component: QualiteCoursEau,
+    title: "Qualité cours d'eau",
+    image: QualiteCoursEauLogo,
   },
 ];
 

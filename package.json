@@ -1,5 +1,6 @@
 {
   "name": "hubeau-react-exemple",
+  "homepage": "https://clever-khorana-ba44b9.netlify.app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
