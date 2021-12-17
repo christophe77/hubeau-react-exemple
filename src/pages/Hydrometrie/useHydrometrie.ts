@@ -9,7 +9,7 @@ export default function useHydrometrie() {
   const [relevesH, setRelevesH] = useState<Releve[]>([]);
   const [relevesQ, setRelevesQ] = useState<Releve[]>([]);
 
-  async function getRelevesHydro(code_entite: string, grandeur_hydro:string) {
+  async function getRelevesHydro(code_entite: string, grandeur_hydro: string) {
     setIsLoading(true);
     const sort: Sort = "desc";
     const params = {
@@ -20,12 +20,11 @@ export default function useHydrometrie() {
     };
     try {
       const results = await hydrometrie.observationsTr(params);
-      if(grandeur_hydro==="H"){
+      if (grandeur_hydro === "H") {
         setRelevesH(results.data);
-      }else{
+      } else {
         setRelevesQ(results.data);
       }
-     
     } catch {
       setIsLoading(false);
       throw new Error("");

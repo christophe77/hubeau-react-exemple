@@ -43,19 +43,20 @@ export default function Hydrometrie() {
       {isLoading && <Loading />}
       <Grid container>
         <Grid item xs={12} sm={6}>
-          <h4>hauteur d'eau</h4>
+          <h4>Hauteur (m)</h4>
           {!isLoading &&
             relevesH.length > 0 &&
             relevesH.map((releve, indexReleve) => {
-              return releve.grandeur_hydro === "H" ? (
+              return (
                 <p key={indexReleve}>
-                  {convertDateTime(releve.date_obs)} : {releve.resultat_obs}
+                  {convertDateTime(releve.date_obs)} :{" "}
+                  {Number(releve.resultat_obs) / 10000}
                 </p>
-              ) : null;
+              );
             })}
         </Grid>
         <Grid item xs={12} md={6}>
-          <h4>Débit</h4>
+          <h4>Débit (m³/s)</h4>
           {!isLoading &&
             relevesQ.length > 0 &&
             relevesQ.map((releve, indexReleve) => {
