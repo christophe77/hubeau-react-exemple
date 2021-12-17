@@ -4,7 +4,6 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
 import { FormControl } from "@mui/material";
 import { Parametre } from "../types";
 
@@ -17,10 +16,30 @@ type RechercheProps = {
 };
 const useStyles = makeStyles(() => ({
   searchContainer: {
-    width: "100%",
     display: "flex",
     alignItems: "center",
   },
+  paper: {
+    width: "100%",
+    padding: "10px",
+  },
+  formControl: {
+    width: "100%",
+    padding: "10px",
+  },
+  chipsContainer: {
+    display: "flex",
+    flexWrap: "wrap",
+    marginTop: "5px",
+    marginBottom: "5px",
+  },
+  chip: {
+    marginTop: "5px",
+    marginRight: "5px",
+  },
+  searchButton:{
+    marginTop:"10px"
+  }
 }));
 export default function Recherche(props: RechercheProps) {
   const { commune, setCommune, getUdiList, parametres, setParametres } = props;
@@ -36,8 +55,8 @@ export default function Recherche(props: RechercheProps) {
   };
   return (
     <div className={classes.searchContainer}>
-      <Paper style={{ padding: "10px" }}>
-        <FormControl>
+      <Paper className={classes.paper}>
+        <FormControl className={classes.formControl}>
           <TextField
             id="commune"
             label="commune"
@@ -47,14 +66,16 @@ export default function Recherche(props: RechercheProps) {
             }}
             variant="outlined"
           />
-          <br />
-          <Stack direction="row" spacing={2}>
+
+          <div className={classes.chipsContainer}>
             {parametres &&
               parametres.length > 0 &&
               parametres.map((parametre) => {
                 if (parametre.selected) {
                   return (
                     <Chip
+                      className={classes.chip}
+                      key={parametre.libelle_parametre}
                       label={parametre.libelle_parametre}
                       variant="outlined"
                       onDelete={() =>
@@ -65,15 +86,17 @@ export default function Recherche(props: RechercheProps) {
                 }
                 return null;
               })}
-          </Stack>
-          <br />
-          <Stack direction="row" spacing={2}>
+          </div>
+
+          <div className={classes.chipsContainer}>
             {parametres &&
               parametres.length > 0 &&
               parametres.map((parametre) => {
                 if (!parametre.selected) {
                   return (
                     <Chip
+                      className={classes.chip}
+                      key={parametre.libelle_parametre}
                       label={parametre.libelle_parametre}
                       onClick={() =>
                         handleClick(parametre.code_parametre, "ajouter")
@@ -83,9 +106,13 @@ export default function Recherche(props: RechercheProps) {
                 }
                 return null;
               })}
-          </Stack>
-          <br />
-          <Button variant="outlined" onClick={getUdiList}>
+          </div>
+
+          <Button
+            variant="outlined"
+            className={classes.searchButton}
+            onClick={getUdiList}
+          >
             Rechercher
           </Button>
         </FormControl>

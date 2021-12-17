@@ -6,8 +6,8 @@ import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import CircularProgress from "@mui/material/CircularProgress";
 import PageTitle from "../../common/PageTitle";
+import Loading from "../../common/Loading";
 import useQualiteEauPotable from "./useQualiteEauPotable";
 import Recherche from "./Recherche";
 import Resultats from "./Resultats";
@@ -36,10 +36,10 @@ export default function QualiteEauPotable() {
         parametres={parametres}
         setParametres={setParametres}
       />
-      {searchIsLoading && <CircularProgress />}
+      {searchIsLoading && <Loading />}
       {!searchIsLoading && udiList && udiList.length > 0 && (
         <List
-          sx={{ width: "100%", bgcolor: "background.paper" }}
+          sx={{ width: "100%", marginTop: "15px", bgcolor: "background.paper" }}
           component="nav"
           aria-labelledby="udi-subheader"
           subheader={
