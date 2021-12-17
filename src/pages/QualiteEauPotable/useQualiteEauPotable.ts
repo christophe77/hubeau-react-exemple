@@ -66,8 +66,12 @@ const useQualiteEauPotable = () => {
         setResultIsLoading(false);
         throw new Error("");
       }
-      udiListClone[udiIndexInList].open = true;
-      setUdilist(udiListClone);
+      const uiUdiList = udiListClone.map((udi, i) => {
+        return udiIndexInList === i
+          ? { ...udi, open: true }
+          : { ...udi, open: false };
+      });
+      setUdilist(uiUdiList);
       setResultIsLoading(false);
     }
   }
