@@ -4,6 +4,7 @@ export type Resultat = {
   libelle_station: string;
   date_prelevement: string;
   resultat: string;
+  symbole_unite: string;
   mnemo_remarque: string;
   libelle_qualification: string;
 };

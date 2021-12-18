@@ -34,10 +34,10 @@ export default function Tableau(props: TableauProps) {
               <b>Paramètre</b>
             </TableCell>
             <TableCell align="center">
-              <b>Remarque</b>
+              <b>Résultat</b>
             </TableCell>
             <TableCell align="center">
-              <b>Résultat</b>
+              <b>Qualification</b>
             </TableCell>
           </TableRow>
         </TableHead>
@@ -51,7 +51,8 @@ export default function Tableau(props: TableauProps) {
                 {convertDate(resultat.date_prelevement)}
               </TableCell>
               <TableCell align="center">{resultat.libelle_parametre}</TableCell>
-              <TableCell align="center">{resultat.mnemo_remarque}</TableCell>
+              <TableCell align="center">{resultat.resultat}
+              {resultat.symbole_unite !== "X" && resultat.symbole_unite}</TableCell>
               <TableCell align="center">
                 {resultat.libelle_qualification}
               </TableCell>

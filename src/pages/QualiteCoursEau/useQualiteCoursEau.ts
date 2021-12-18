@@ -12,6 +12,7 @@ const useQualiteCoursEau = () => {
 
   async function getStations() {
     setIsLoading(true);
+    setResultats([])
     const params = {
       libelle_commune: [commune],
       fields: ["code_station", "nom_cours_eau", "libelle_station"],

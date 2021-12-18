@@ -22,10 +22,13 @@ export default function Cartes(props: CartesProps) {
             >
               {convertDate(resultat.date_prelevement)}
             </Typography>
-            <Typography variant="h5" component="div">
+            <Typography variant="body1" component="div">
               {resultat.libelle_parametre}
             </Typography>
-            <Typography variant="body2">{resultat.mnemo_remarque}</Typography>
+            <Typography variant="body2">
+              {resultat.resultat}
+              {resultat.symbole_unite !== "X" && resultat.symbole_unite}
+            </Typography>
             <Typography variant="body2">
               {resultat.libelle_qualification}
             </Typography>
