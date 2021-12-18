@@ -3,6 +3,7 @@ import PageTitle from "../../common/PageTitle";
 import Loading from "../../common/Loading";
 import useQualiteCoursEau from "./useQualiteCoursEau";
 import Recherche from "./Recherche";
+import Stations from "./Stations";
 import Resultats from "./Resultats";
 
 export default function QualiteCoursEau() {
@@ -10,6 +11,8 @@ export default function QualiteCoursEau() {
     commune,
     setCommune,
     isLoading,
+    getStations,
+    stations,
     getResultats,
     resultats,
   } = useQualiteCoursEau();
@@ -18,12 +21,15 @@ export default function QualiteCoursEau() {
     <>
       <PageTitle path={"/qualite-cours-eau"} />
       <Recherche
-        getResultats={getResultats}
+        getStations={getStations}
         commune={commune}
         setCommune={setCommune}
       />
+      {stations?.length > 0 && (
+        <Stations stations={stations} getResultats={getResultats} />
+      )}
       {isLoading && <Loading />}
-      {!isLoading && resultats && resultats.length > 0 && (
+      {!isLoading && resultats?.length > 0 && (
         <Resultats resultats={resultats} />
       )}
     </>

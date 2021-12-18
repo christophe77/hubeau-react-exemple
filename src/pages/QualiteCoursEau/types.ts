@@ -7,8 +7,8 @@ export type Resultat = {
   mnemo_remarque: string;
   libelle_qualification: string;
 };
-export type Parametre = {
-  code_parametre: string;
-  libelle_parametre: string;
-  selected: boolean;
+export type Station = {
+  code_station: string;
+  nom_cours_eau: string;
+  libelle_station: string;
 };

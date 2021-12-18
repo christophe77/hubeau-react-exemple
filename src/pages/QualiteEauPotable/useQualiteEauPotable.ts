@@ -2,7 +2,7 @@ import { useState } from "react";
 import { qualiteEauPotable } from "hubeau-api";
 import { Udi, Resultat, Parametre } from "./types";
 import { currentYear } from "../../utils";
-import dataParametres from "./codes_parametres.json";
+import codesParametres from "./codesParametres";
 
 const useQualiteEauPotable = () => {
   const [commune, setCommune] = useState<string>("");
@@ -10,9 +10,7 @@ const useQualiteEauPotable = () => {
   const [resultats, setResultats] = useState<Resultat[]>([]);
   const [searchIsLoading, setSearchIsLoading] = useState<boolean>(false);
   const [resultIsLoading, setResultIsLoading] = useState<boolean>(false);
-  const [parametres, setParametres] = useState<Parametre[]>(
-    dataParametres.codes_parametres
-  );
+  const [parametres, setParametres] = useState<Parametre[]>(codesParametres);
 
   async function getUdiList() {
     setSearchIsLoading(true);
@@ -29,6 +27,7 @@ const useQualiteEauPotable = () => {
         });
         setUdilist(uiUdiList);
       } catch {
+        setUdilist([]);
         setSearchIsLoading(false);
         throw new Error("");
       }
@@ -63,6 +62,7 @@ const useQualiteEauPotable = () => {
         const results = await qualiteEauPotable.resultatsDis(params);
         setResultats(results.data);
       } catch {
+        setResultats([]);
         setResultIsLoading(false);
         throw new Error("");
       }

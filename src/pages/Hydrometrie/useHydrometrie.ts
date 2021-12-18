@@ -26,6 +26,8 @@ export default function useHydrometrie() {
         setRelevesQ(results.data);
       }
     } catch {
+      setRelevesH([]);
+      setRelevesQ([]);
       setIsLoading(false);
       throw new Error("");
     }

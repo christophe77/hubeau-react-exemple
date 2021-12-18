@@ -12,11 +12,8 @@ export default function Cartes(props: CartesProps) {
   const { resultats } = props;
   return (
     <>
-      {resultats.map((resultat: Resultat) => (
-        <Card
-          sx={{ minWidth: 275 }}
-          key={`${resultat.code_parametre}-${resultat.date_prelevement}`}
-        >
+      {resultats.map((resultat: Resultat, i: number) => (
+        <Card sx={{ minWidth: 275 }} key={i}>
           <CardContent>
             <Typography
               sx={{ fontSize: 14 }}
@@ -25,15 +22,10 @@ export default function Cartes(props: CartesProps) {
             >
               {convertDate(resultat.date_prelevement)}
             </Typography>
-            <Typography variant="h4" component="div">
-              {resultat.libelle_station}
-            </Typography>
             <Typography variant="h5" component="div">
               {resultat.libelle_parametre}
             </Typography>
-            <Typography variant="body2">
-              {resultat.mnemo_remarque}
-            </Typography>
+            <Typography variant="body2">{resultat.mnemo_remarque}</Typography>
             <Typography variant="body2">
               {resultat.libelle_qualification}
             </Typography>

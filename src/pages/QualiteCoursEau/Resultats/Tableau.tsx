@@ -24,14 +24,11 @@ export default function Tableau(props: TableauProps) {
   const classes = useStyles();
   return (
     <TableContainer component={Paper} className={classes.paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="udi-resultats">
+      <Table sx={{ minWidth: 650 }} aria-label="prel-resultats">
         <TableHead>
           <TableRow>
             <TableCell>
               <b>Date</b>
-            </TableCell>
-            <TableCell align="center">
-              <b>Station</b>
             </TableCell>
             <TableCell align="center">
               <b>Paramètre</b>
@@ -53,7 +50,6 @@ export default function Tableau(props: TableauProps) {
               <TableCell component="th" scope="row">
                 {convertDate(resultat.date_prelevement)}
               </TableCell>
-              <TableCell align="center">{resultat.libelle_station}</TableCell>
               <TableCell align="center">{resultat.libelle_parametre}</TableCell>
               <TableCell align="center">{resultat.mnemo_remarque}</TableCell>
               <TableCell align="center">

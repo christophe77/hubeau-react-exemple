@@ -8,7 +8,7 @@ import { FormControl } from "@mui/material";
 type RechercheProps = {
   commune: string;
   setCommune: (commune: string) => void;
-  getResultats: () => void;
+  getStations: () => void;
 };
 const useStyles = makeStyles(() => ({
   searchContainer: {
@@ -38,7 +38,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 export default function Recherche(props: RechercheProps) {
-  const { commune, setCommune, getResultats } = props;
+  const { commune, setCommune, getStations } = props;
   const classes = useStyles();
 
   return (
@@ -57,7 +57,7 @@ export default function Recherche(props: RechercheProps) {
           <Button
             variant="outlined"
             className={classes.searchButton}
-            onClick={getResultats}
+            onClick={getStations}
           >
             Rechercher
           </Button>
