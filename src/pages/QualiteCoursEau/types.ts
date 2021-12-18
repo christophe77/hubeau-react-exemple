@@ -13,3 +13,7 @@ export type Station = {
   nom_cours_eau: string;
   libelle_station: string;
 };
+export type QceError = {
+  noStation: boolean;
+  noResults:boolean;
+};

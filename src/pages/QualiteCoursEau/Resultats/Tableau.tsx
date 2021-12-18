@@ -51,8 +51,10 @@ export default function Tableau(props: TableauProps) {
                 {convertDate(resultat.date_prelevement)}
               </TableCell>
               <TableCell align="center">{resultat.libelle_parametre}</TableCell>
-              <TableCell align="center">{resultat.resultat}
-              {resultat.symbole_unite !== "X" && resultat.symbole_unite}</TableCell>
+              <TableCell align="center">
+                {resultat.resultat}
+                {resultat.symbole_unite !== "X" && resultat.symbole_unite}
+              </TableCell>
               <TableCell align="center">
                 {resultat.libelle_qualification}
               </TableCell>

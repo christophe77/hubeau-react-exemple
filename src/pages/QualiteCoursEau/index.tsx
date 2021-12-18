@@ -8,6 +8,7 @@ import Resultats from "./Resultats";
 
 export default function QualiteCoursEau() {
   const {
+    error,
     commune,
     setCommune,
     isLoading,
@@ -25,12 +26,16 @@ export default function QualiteCoursEau() {
         commune={commune}
         setCommune={setCommune}
       />
-      {stations?.length > 0 && (
-        <Stations stations={stations} getResultats={getResultats} />
+      {stations && (
+        <Stations
+          stations={stations}
+          getResultats={getResultats}
+          error={error}
+        />
       )}
       {isLoading && <Loading />}
-      {!isLoading && resultats?.length > 0 && (
-        <Resultats resultats={resultats} />
+      {!isLoading && resultats && (
+        <Resultats resultats={resultats} error={error} />
       )}
     </>
   );

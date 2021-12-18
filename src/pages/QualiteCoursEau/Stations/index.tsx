@@ -4,11 +4,12 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import ButtonGroup from "@mui/material/ButtonGroup";
-import { Station } from "../types";
+import { Station, QceError } from "../types";
 
 type StationsProps = {
   stations: Station[];
   getResultats: (codeStation: string) => void;
+  error: QceError;
 };
 const useStyles = makeStyles(() => ({
   paper: {
@@ -25,11 +26,14 @@ const useStyles = makeStyles(() => ({
   buttonSm: {},
   buttonXs: {
     margin: "5px 5px 5px 5px",
-
+  },
+  noStation: {
+    width: "100%",
+    textAlign: "center",
   },
 }));
 export default function Stations(props: StationsProps) {
-  const { stations, getResultats } = props;
+  const { stations, getResultats, error } = props;
   const classes = useStyles();
   const theme = useTheme();
   const isUpSm = useMediaQuery(theme.breakpoints.up("sm"));
@@ -62,6 +66,9 @@ export default function Stations(props: StationsProps) {
             );
           })}
         </ButtonGroup>
+      )}
+      {error.noStation && (
+        <p className={classes.noStation}>Pas de stations sur cette commune</p>
       )}
     </Paper>
   );
