@@ -39,6 +39,9 @@ export default function Tableau(props: TableauProps) {
             <TableCell align="center">
               <b>Résultat</b>
             </TableCell>
+            <TableCell align="center">
+              <b>Conclusion</b>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -55,6 +58,11 @@ export default function Tableau(props: TableauProps) {
                 </TableCell>
                 <TableCell align="center">
                   {resultat.libelle_parametre}
+                </TableCell>
+                <TableCell align="center">
+                  {resultat.resultat_alphanumerique}&nbsp;
+                  {resultat.libelle_unite !== "SANS OBJET" &&
+                    resultat.libelle_unite}
                 </TableCell>
                 <TableCell align="center">
                   {resultat.conclusion_conformite_prelevement}

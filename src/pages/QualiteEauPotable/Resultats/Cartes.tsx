@@ -32,8 +32,13 @@ export default function Cartes(props: CartesProps) {
               >
                 {convertDate(resultat.date_prelevement)}
               </Typography>
-              <Typography variant="h5" component="div">
+              <Typography variant="body1" component="div">
                 {resultat.libelle_parametre}
+              </Typography>
+              <Typography variant="body1" component="div">
+                {resultat.resultat_alphanumerique}&nbsp;
+                {resultat.libelle_unite !== "SANS OBJET" &&
+                  resultat.libelle_unite}
               </Typography>
               <Typography variant="body2">
                 {resultat.conclusion_conformite_prelevement}

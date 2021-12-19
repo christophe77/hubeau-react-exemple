@@ -10,6 +10,8 @@ export type Resultat = {
   conclusion_conformite_prelevement: string;
   date_prelevement: string;
   code_parametre: string;
+  resultat_alphanumerique: string;
+  libelle_unite: string;
 };
 export type Parametre = {
   code_parametre: string;

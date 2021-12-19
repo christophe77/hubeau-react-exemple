@@ -17,27 +17,27 @@ const codesParametres = [
   {
     code_parametre: "1755",
     libelle_parametre: "Chlore combiné",
-    selected: false,
+    selected: true,
   },
   {
     code_parametre: "1399",
     libelle_parametre: "Chlore total",
-    selected: false,
+    selected: true,
   },
   {
     code_parametre: "1340",
     libelle_parametre: "Nitrates (en NO3)",
-    selected: false,
+    selected: true,
   },
   {
     code_parametre: "1447",
     libelle_parametre: "Bactéries coliformes /100ml-MS",
-    selected: false,
+    selected: true,
   },
   {
     code_parametre: "1042",
     libelle_parametre: "Bact. et spores sulfito-rédu./100ml",
-    selected: false,
+    selected: true,
   },
 ];
 export default codesParametres;

@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { qualiteEauPotable } from "hubeau-api";
 import { Udi, Resultat, Parametre } from "./types";
-import { currentYear } from "../../utils";
+import {
+  currentYear,
+  filterObjectArrayFromKey,
+  filterObjectArrayByDateFromKey,
+} from "../../utils";
 import codesParametres from "./codesParametres";
 
 const useQualiteEauPotable = () => {
@@ -16,16 +20,20 @@ const useQualiteEauPotable = () => {
     setSearchIsLoading(true);
     const params = {
       nom_commune: [commune],
-      annee: [currentYear],
+      annee: [currentYear, currentYear - 1],
       fields: ["code_reseau", "nom_quartier", "nom_reseau"],
     };
     if (commune && commune !== "") {
       try {
         const results = await qualiteEauPotable.communesUdi(params);
-        const uiUdiList = results.data.map((udi: Udi) => {
+        const filteredResults = filterObjectArrayFromKey(
+          results.data,
+          "code_reseau"
+        );
+        const updatedUdiList = filteredResults.map((udi: Udi) => {
           return { ...udi, open: false };
         });
-        setUdilist(uiUdiList);
+        setUdilist(updatedUdiList);
       } catch {
         setUdilist([]);
         setSearchIsLoading(false);
@@ -56,11 +64,17 @@ const useQualiteEauPotable = () => {
         nom_quartier: [udi.nom_quartier],
         nom_reseau: [udi.nom_reseau],
         code_parametre,
-        size: 10,
+        size: 20,
       };
       try {
         const results = await qualiteEauPotable.resultatsDis(params);
-        setResultats(results.data);
+        const filteredResults = filterObjectArrayByDateFromKey(
+          results.data,
+          "date_prelevement",
+          results.data[0].date_prelevement
+        );
+
+        setResultats(filteredResults);
       } catch {
         setResultats([]);
         setResultIsLoading(false);
