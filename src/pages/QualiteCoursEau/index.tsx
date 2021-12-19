@@ -16,6 +16,7 @@ export default function QualiteCoursEau() {
     stations,
     getResultats,
     resultats,
+    communes
   } = useQualiteCoursEau();
 
   return (
@@ -25,6 +26,7 @@ export default function QualiteCoursEau() {
         getStations={getStations}
         commune={commune}
         setCommune={setCommune}
+        communes={communes}
       />
       {stations && (
         <Stations

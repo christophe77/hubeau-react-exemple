@@ -2,11 +2,13 @@ import React from "react";
 import makeStyles from "@mui/styles/makeStyles";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
+import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { FormControl } from "@mui/material";
 
 type RechercheProps = {
   commune: string;
+  communes: any[];
   setCommune: (commune: string) => void;
   getStations: () => void;
 };
@@ -38,14 +40,37 @@ const useStyles = makeStyles(() => ({
   },
 }));
 export default function Recherche(props: RechercheProps) {
-  const { commune, setCommune, getStations } = props;
+  const { communes, commune, setCommune, getStations } = props;
   const classes = useStyles();
 
   return (
     <div className={classes.searchContainer}>
       <Paper className={classes.paper}>
         <FormControl className={classes.formControl}>
-          <TextField
+          <Autocomplete
+            onChange={(event, values) => {
+              setCommune(values);
+            }}
+            onInputChange={(event, values) => {
+              setCommune(values);
+            }}
+            freeSolo
+            id="free-solo-commune"
+            disableClearable
+            options={communes.map((communeFromList) => communeFromList.slug)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="commune"
+                InputProps={{
+                  ...params.InputProps,
+                  type: "search",
+                }}
+                value={commune}
+              />
+            )}
+          />
+          {/*   <TextField
             id="commune"
             label="commune"
             value={commune}
@@ -53,7 +78,7 @@ export default function Recherche(props: RechercheProps) {
               setCommune(event.target.value);
             }}
             variant="outlined"
-          />
+          /> */}
           <Button
             variant="outlined"
             className={classes.searchButton}

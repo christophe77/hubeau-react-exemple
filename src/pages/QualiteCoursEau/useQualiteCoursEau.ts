@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { qualiteRivieres } from "hubeau-api";
+import { searchCity } from "france-cities-js";
 import { QceError, Resultat, Station } from "./types";
 import { Sort } from "hubeau-api/dist/esm/types/communs";
 
@@ -13,7 +14,7 @@ const useQualiteCoursEau = () => {
     noResults: false,
   });
   const sort: Sort = "desc";
-
+  const communes = searchCity.byName(commune, 10);
   async function getStations() {
     setIsLoading(true);
     setResultats([]);
@@ -68,6 +69,7 @@ const useQualiteCoursEau = () => {
     getStations,
     resultats,
     isLoading,
+    communes,
   };
 };
 export default useQualiteCoursEau;

@@ -1,4 +1,4 @@
-export type AnyObject = {
+type AnyObject = {
   [key: string]: string | string[] | number | number[] | boolean | AnyObject[];
 };
 
