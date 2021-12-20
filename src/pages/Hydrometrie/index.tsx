@@ -21,7 +21,7 @@ export default function Hydrometrie() {
     <>
       <PageTitle path={"/hydrometrie"} />
       <h3>Stations hydrométriques de la Loire</h3>
-      <FormControl fullWidth>
+      <FormControl fullWidth style={{marginBottom:"15px"}}>
         <InputLabel variant="standard" htmlFor="uncontrolled-station">
           Station
         </InputLabel>
@@ -46,6 +46,7 @@ export default function Hydrometrie() {
             })}
         </NativeSelect>
       </FormControl>
+      <br />
       {isLoading && <Loading />}
       <Grid container>
         <Grid item xs={12}>

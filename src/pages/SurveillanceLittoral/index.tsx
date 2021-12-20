@@ -1,5 +1,6 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
 import { Info } from "@mui/icons-material";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { LatLngExpression } from "leaflet";
@@ -56,8 +57,10 @@ export default function SurveillanceLittoral() {
                             <li key={taxon}>{taxon}</li>
                           ))}
                       </ul>
-                      <p style={{ textAlign: "center", cursor: "pointer" }}>
-                        <Info color="success" sx={{ fontSize: 40 }} />
+                      <p style={{ textAlign: "center", fontSize:"20px" }}>
+                        <Button variant="contained" startIcon={<Info />}>
+                          Derniers relevés
+                        </Button>
                       </p>
                     </div>
                   </Popup>

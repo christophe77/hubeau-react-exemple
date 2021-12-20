@@ -77,7 +77,7 @@ export default function Recherche(props: RechercheProps) {
             )}
           />
           <Button
-            variant="outlined"
+            variant="contained"
             className={classes.searchButton}
             onClick={getStations}
           >

@@ -109,7 +109,7 @@ export default function Recherche(props: RechercheProps) {
           </div>
 
           <Button
-            variant="outlined"
+            variant="contained"
             className={classes.searchButton}
             onClick={getUdiList}
           >
