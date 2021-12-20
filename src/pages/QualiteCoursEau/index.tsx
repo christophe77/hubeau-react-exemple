@@ -36,7 +36,7 @@ export default function QualiteCoursEau() {
         />
       )}
       {isLoading && <Loading />}
-      {!isLoading && resultats && (
+      {!isLoading && resultats && resultats.length > 0 &&  (
         <Resultats resultats={resultats} error={error} />
       )}
     </>

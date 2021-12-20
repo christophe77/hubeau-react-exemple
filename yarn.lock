@@ -4454,10 +4454,10 @@ fraction.js@^4.1.1:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.1.2.tgz#13e420a92422b6cf244dff8690ed89401029fbe8"
   integrity sha512-o2RiJQ6DZaR/5+Si0qJUIy637QMRudSi9kU/FFzx9EZazrIdnBgpU+3sEWCxAVhH2RtxW2Oz+T4p2o8uOPVcgA==
 
-france-cities-js@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/france-cities-js/-/france-cities-js-0.0.4.tgz#c9714aef72eeced1295ffc121988c27a459ec825"
-  integrity sha512-xenssXkNfOFLMaVdsDK2U5Qky/OGmnwJ8kDpnfMQ8ReKKokkvhbF0GivGHljufgt3OHBe1PNlxoexMaj00XLnw==
+france-cities-js@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/france-cities-js/-/france-cities-js-0.0.5.tgz#aa06372833a037ad88559acdde6eaa53a2aedb9a"
+  integrity sha512-4Qkzfz0yRHe92pUgXLPb1lPb+9/caGLWlOeWDKVsl0TsQal3iEMMZaOwB5T1tZoP9rVOQWxhkRqv+0+Duq/CoQ==
   dependencies:
     "@types/superagent" "^4.1.13"
     superagent "^6.1.0"

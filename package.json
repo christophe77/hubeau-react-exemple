@@ -17,7 +17,7 @@
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
     "@types/react-router-dom": "^5.3.2",
-    "france-cities-js": "^0.0.4",
+    "france-cities-js": "^0.0.5",
     "hubeau-api": "^0.1.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

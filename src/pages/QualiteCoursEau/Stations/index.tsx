@@ -12,10 +12,17 @@ type StationsProps = {
   error: QceError;
 };
 const useStyles = makeStyles(() => ({
-  paper: {
+  paperXs: {
     width: "100%",
     marginTop: "15px",
     display: "flex",
+  },
+  paperSm: {
+    width: "100%",
+    marginTop: "15px",
+    display: "flex",
+    overflowX: "auto",
+    overflowY: "hidden",
   },
   buttonGroupSm: {
     width: "100%",
@@ -23,7 +30,7 @@ const useStyles = makeStyles(() => ({
   buttonGroupXs: {
     width: "inherit",
   },
-  buttonSm: {},
+  buttonSm: { minWidth: "150px", margin: "5px 5px 5px 5px" },
   buttonXs: {
     margin: "5px 5px 5px 5px",
   },
@@ -40,7 +47,7 @@ export default function Stations(props: StationsProps) {
 
   const [codeStation, setCodeStation] = useState<string>("");
   return (
-    <Paper className={classes.paper}>
+    <Paper className={isUpSm ? classes.paperSm : classes.paperXs}>
       {stations?.length > 0 && (
         <ButtonGroup
           className={isUpSm ? classes.buttonGroupSm : classes.buttonGroupXs}

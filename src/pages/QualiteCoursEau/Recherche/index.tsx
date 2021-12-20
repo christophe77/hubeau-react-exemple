@@ -49,7 +49,10 @@ export default function Recherche(props: RechercheProps) {
         <FormControl className={classes.formControl}>
           <Autocomplete
             onChange={(event, values) => {
-              setCommune(values);
+              const cityZipcodeAndCityName = values.split(" ");
+              cityZipcodeAndCityName.shift();
+              const cityName = cityZipcodeAndCityName.join(" ");
+              setCommune(cityName ? cityName : "");
             }}
             onInputChange={(event, values) => {
               setCommune(values);
@@ -57,7 +60,10 @@ export default function Recherche(props: RechercheProps) {
             freeSolo
             id="free-solo-commune"
             disableClearable
-            options={communes.map((communeFromList) => communeFromList.slug)}
+            options={communes.map(
+              (communeFromList) =>
+                `${communeFromList.zip_code} ${communeFromList.slug}`
+            )}
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -70,15 +76,6 @@ export default function Recherche(props: RechercheProps) {
               />
             )}
           />
-          {/*   <TextField
-            id="commune"
-            label="commune"
-            value={commune}
-            onChange={(event) => {
-              setCommune(event.target.value);
-            }}
-            variant="outlined"
-          /> */}
           <Button
             variant="outlined"
             className={classes.searchButton}
