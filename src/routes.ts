@@ -6,6 +6,9 @@ import QualiteCoursEauLogo from "./assets/images/quality.svg";
 import Goutte from "./assets/images/goutte.png";
 import HydrometrieLogo from "./assets/images/hydrometry.svg";
 import Hydrometrie from "./pages/Hydrometrie";
+import SurveillanceLittoral from "./pages/SurveillanceLittoral";
+import SurveillanceLittoralLogo from "./assets/images/surv-lit.svg";
+
 const routes = [
   {
     key: 1,
@@ -38,6 +41,14 @@ const routes = [
     component: QualiteCoursEau,
     title: "Qualité cours d'eau",
     image: QualiteCoursEauLogo,
+  },
+  {
+    key: 5,
+    path: "/surveillance-littoral",
+    exact: true,
+    component: SurveillanceLittoral,
+    title: "Surveillance littoral",
+    image: SurveillanceLittoralLogo,
   },
 ];
 
