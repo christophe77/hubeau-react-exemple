@@ -21,7 +21,7 @@ export default function Hydrometrie() {
     <>
       <PageTitle path={"/hydrometrie"} />
       <h3>Stations hydrométriques de la Loire</h3>
-      <FormControl fullWidth style={{marginBottom:"15px"}}>
+      <FormControl fullWidth style={{ marginBottom: "15px" }}>
         <InputLabel variant="standard" htmlFor="uncontrolled-station">
           Station
         </InputLabel>
@@ -59,10 +59,11 @@ export default function Hydrometrie() {
               <Marker position={position}>
                 <Popup>
                   {convertDateTime(relevesH[0].date_obs)} <br />
-                  Hauteur (m) : {Number(relevesH[0].resultat_obs) / 10000}
-                  <br /><br />
+                  Hauteur (m) : {Number(relevesH[0].resultat_obs) / 1000}
+                  <br />
+                  <br />
                   {convertDateTime(relevesQ[0].date_obs)} <br />
-                  Débit (m³/s) : {relevesQ[0].resultat_obs}
+                  Débit (m³/s) : {Number(relevesQ[0].resultat_obs) / 1000}
                 </Popup>
               </Marker>
             </MapContainer>
@@ -76,7 +77,7 @@ export default function Hydrometrie() {
               return (
                 <p key={indexReleve}>
                   {convertDateTime(releve.date_obs)} :{" "}
-                  {Number(releve.resultat_obs) / 10000}
+                  {Number(releve.resultat_obs) / 1000}
                 </p>
               );
             })}
@@ -88,7 +89,8 @@ export default function Hydrometrie() {
             relevesQ.map((releve, indexReleve) => {
               return releve.grandeur_hydro === "Q" ? (
                 <p key={indexReleve}>
-                  {convertDateTime(releve.date_obs)} : {releve.resultat_obs}
+                  {convertDateTime(releve.date_obs)} :{" "}
+                  {Number(releve.resultat_obs) / 1000}
                 </p>
               ) : null;
             })}
